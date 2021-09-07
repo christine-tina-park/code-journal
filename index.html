@@ -19,6 +19,28 @@
   </header>
   <main>
     <div data-view="entry-form">
+      <form>
+        <div class="row">
+          <h2>New Entry</h2>
+        </div>
+        <div class="row">
+          <div class="image-container">
+            <img>
+          </div>
+        </div>
+        <div class="row">
+          <label for="title">Title</label>
+          <input id="title" type="text" name="title" required="required">
+        </div>
+        <div class="row">
+          <label for="photo-url">Photo URL</label>
+          <input id="photo-url" type="text" name="photo-url" required="required">
+        </div>
+        <div class="row">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="text" rows="6"></textarea>
+        </div>
+      </form>
     </div>
   </main>
   <script src="js/data.js"></script>
