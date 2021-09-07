@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
   <link rel="icon" href="images/favicon.ico">
-  <link
-    rel="stylesheet"
-    crossorigin="anonymous"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
-  <link rel="stylesheet" href="css/reset.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Proza+Libre:wght@400;600&display=swap"
+  rel="stylesheet">
+<link
+  rel="stylesheet"
+  crossorigin="anonymous"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+<link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
+    <div class="row header">
+      <div class="column-full container">
+        <h3>Code Journal</h3>
+      </div>
+    </div>
   </header>
   <main>
     <div class="container" data-view="entry-form">
@@ -28,21 +37,26 @@
           <div class="row">
             <div class="column-half">
               <div class="image-container">
-                <img class="fill" src="images/placeholder-image-square.jpg">
+                <img src="images/placeholder-image-square.jpg">
               </div>
             </div>
             <div class="column-half">
               <label for="title">Title</label>
-              <input id="title" type="text" name="title" required="required">
+              <input id="title" type="text" name="title" required>
               <label for="photo-url">Photo URL</label>
-              <input id="photo-url" type="text" name="photo-url" required="required">
+              <input id="photo-url" type="text" name="photo-url" required>
             </div>
           </div>
           <div class="row">
             <div class="column-full">
               <label for="notes">Notes</label>
-              <textarea id="notes" name="text" rows="6"></textarea>
+              <textarea id="notes" name="text" required></textarea>
             </div>
+          </div>
+          <div class="row">
+            <div class="column-full text-right">
+              <button class="save">SAVE</button>
+             </div>
           </div>
       </form>
     </div>

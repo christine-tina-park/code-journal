@@ -1,20 +1,78 @@
 body {
   background-color: #f0f0f0;
+  font-family: 'Proza Libre', sans-serif;
+  font-weight: 600;
+}
+
+img {
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+label {
+  font-size: 16px;
 }
 
 input,
 textarea {
   width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 5px;
+input {
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  height: 149px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 3px solid #562b81;
+}
+
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  height: 32px;
+  width: 72px;
+  border: none;
+  border-radius: 4px;
 }
 
 .hidden {
   display: none !important;
+}
+
+.header {
+  background-color: #562b81;
+  color: white;
 }
 
 .container {
@@ -33,11 +91,28 @@ img {
   width: 100%;
 }
 
-.fill {
-  object-fit: fill;
+.image-container {
+  margin-bottom: 5px;
+}
+
+.save {
+  background-color: #562b81;
+  color: white;
+}
+
+.text-right {
+  text-align: right;
 }
 
 @media screen and (min-width: 768px) {
+  body {
+    height: 1024px;
+  }
+
+  img {
+    height: 345px;
+  }
+
   .container {
     max-width: 900px;
   }
@@ -49,5 +124,9 @@ img {
 
   .column-half {
     width: 50%;
+  }
+
+  .image-container {
+    margin-bottom: 20px;
   }
 }
