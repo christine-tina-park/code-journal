@@ -18,28 +18,32 @@
   <header>
   </header>
   <main>
-    <div data-view="entry-form">
+    <div class="container" data-view="entry-form">
       <form>
-        <div class="row">
-          <h2>New Entry</h2>
-        </div>
-        <div class="row">
-          <div class="image-container">
-            <img>
+          <div class="row">
+            <div class="column-full">
+              <h2>New Entry</h2>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <label for="title">Title</label>
-          <input id="title" type="text" name="title" required="required">
-        </div>
-        <div class="row">
-          <label for="photo-url">Photo URL</label>
-          <input id="photo-url" type="text" name="photo-url" required="required">
-        </div>
-        <div class="row">
-          <label for="notes">Notes</label>
-          <textarea id="notes" name="text" rows="6"></textarea>
-        </div>
+          <div class="row">
+            <div class="column-half">
+              <div class="image-container">
+                <img class="fill" src="images/placeholder-image-square.jpg">
+              </div>
+            </div>
+            <div class="column-half">
+              <label for="title">Title</label>
+              <input id="title" type="text" name="title" required="required">
+              <label for="photo-url">Photo URL</label>
+              <input id="photo-url" type="text" name="photo-url" required="required">
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <label for="notes">Notes</label>
+              <textarea id="notes" name="text" rows="6"></textarea>
+            </div>
+          </div>
       </form>
     </div>
   </main>
