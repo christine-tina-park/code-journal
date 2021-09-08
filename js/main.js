@@ -18,11 +18,13 @@ $form.addEventListener('submit', function handleSubmit(event) {
   entry.title = $form.elements.title.value;
   entry.photoUrl = $form.elements.photoUrl.value;
   entry.notes = $form.elements.notes.value;
-  entry.nextEntryID = n;
+  entry.entryId = n;
   n += 1;
   data.entries.push(entry);
+  data.nextEntryId += 1;
   $title.value = '';
   $photoUrl.value = '';
   $notes.value = '';
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+
 });
