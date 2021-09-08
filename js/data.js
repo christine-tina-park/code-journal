@@ -6,7 +6,7 @@ var data = {
   nextEntryId: 1
 };
 
-var previousDataJSON = localStorage.getItem('js-local-storage');
+var previousDataJSON = localStorage.getItem('entries-data');
 
 if (previousDataJSON !== null) {
   data = JSON.parse(previousDataJSON);
@@ -14,5 +14,5 @@ if (previousDataJSON !== null) {
 
 window.addEventListener('beforeunload', function doDataJSON(event) {
   var dataJSON = JSON.stringify(data);
-  this.localStorage.setItem('js-local-storage', dataJSON);
+  this.localStorage.setItem('entries-data', dataJSON);
 });
