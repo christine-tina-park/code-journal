@@ -28,7 +28,7 @@
   </header>
   <main>
     <div class="container" data-view="entry-form">
-      <form>
+      <form id="entry-form">
           <div class="row">
             <div class="column-full">
               <h2>New Entry</h2>
@@ -37,25 +37,25 @@
           <div class="row">
             <div class="column-half">
               <div class="image-container">
-                <img src="images/placeholder-image-square.jpg">
+                <img id="photo" src="images/placeholder-image-square.jpg">
               </div>
             </div>
             <div class="column-half">
               <label for="title">Title</label>
               <input id="title" type="text" name="title" required>
-              <label for="photo-url">Photo URL</label>
-              <input id="photo-url" type="text" name="photo-url" required>
+              <label for="photoUrl">Photo URL</label>
+              <input id="photoUrl" type="text" name="photoUrl" required>
             </div>
           </div>
           <div class="row">
             <div class="column-full">
               <label for="notes">Notes</label>
-              <textarea id="notes" name="text" required></textarea>
+              <textarea id="notes" name="notes" required></textarea>
             </div>
           </div>
           <div class="row">
             <div class="column-full text-right">
-              <button class="save">SAVE</button>
+              <input id="submit" type="submit" class="save" value="SAVE">
              </div>
           </div>
       </form>
