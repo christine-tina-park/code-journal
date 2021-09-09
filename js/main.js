@@ -49,7 +49,7 @@ function renderEntry(entry) {
 }
 
 window.addEventListener('DOMContentLoaded', function showEntryList(event) {
-  for (var i = 0; i < data.entries.length; i++) {
+  for (var i = data.entries.length - 1; i >= 0; i--) {
     var DOMentry = renderEntry(data.entries[i]);
     $entryList.appendChild(DOMentry);
   }
