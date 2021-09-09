@@ -7,7 +7,8 @@
   <link rel="icon" href="images/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Proza+Libre:wght@400;600&display=swap"
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Proza+Libre:wght@400;600&display=swap"
   rel="stylesheet">
 <link
   rel="stylesheet"
@@ -29,11 +30,11 @@
     </div>
   </header>
   <main>
-    <div class="container" data-view="entry-form">
+    <div class="hidden container" data-view="entry-form">
       <form id="entry-form">
           <div class="row">
             <div class="column-full">
-              <h2>New Entry</h2>
+              <h1>New Entry</h1>
             </div>
           </div>
           <div class="row">
@@ -57,10 +58,43 @@
           </div>
           <div class="row">
             <div class="column-full text-right">
-              <input id="submit" type="submit" class="save" value="SAVE">
+              <input id="submit" type="submit" value="SAVE">
              </div>
           </div>
       </form>
+    </div>
+    <div class="container" data-view="entries">
+      <div class="row">
+        <div class="column-full relative">
+          <h1>Entries</h1>
+          <button id="new" class="absolute">NEW</button>
+        </div>
+      </div>
+      <ul>
+        <li>
+        <div class="row margin-bottom">
+          <div class="column-half">
+            <img src="images/placeholder-image-square.jpg">
+          </div>
+          <div class="column-half">
+            <h2>Ada Lovelace</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque necessitatibus corporis distinctio non cum, rerum, numquam sit, eaque tenetur cupiditate vero at dolorem eum sapiente iure vitae pariatur magni natus.</p>
+          </div>
+        </div>
+        </li>
+        <li>
+          <div class="row margin-bottom">
+            <div class="column-half">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+            <div class="column-half">
+              <h2>Ada Lovelace</h2>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque necessitatibus corporis distinctio non cum, rerum,
+              numquam sit, eaque tenetur cupiditate vero at dolorem eum sapiente iure vitae pariatur magni natus.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </main>
   <script src="js/data.js"></script>
