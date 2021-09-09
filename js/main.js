@@ -2,22 +2,56 @@
 /* exported data */
 var $form = document.querySelector('#entry-form');
 var $photoUrl = $form.elements.photoUrl;
-var $photo = document.querySelector('#photo');
+var $image = document.querySelector('.image');
+var entry = {};
+var $entryList = document.querySelector('#entryList');
 
 $photoUrl.addEventListener('input', function updateSrc(event) {
   var $currentUrl = $photoUrl.value;
-  $photo.setAttribute('src', $currentUrl);
+  $image.setAttribute('src', $currentUrl);
 });
 
 $form.addEventListener('submit', function handleSubmit(event) {
   event.preventDefault();
-  var entry = {};
   entry.title = $form.elements.title.value;
   entry.photoUrl = $form.elements.photoUrl.value;
   entry.notes = $form.elements.notes.value;
   entry.entryId = data.nextEntryId;
   data.entries.push(entry);
   data.nextEntryId += 1;
-  $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
 });
+
+function renderEntry(entry) {
+  var $li = document.createElement('li');
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row margin-bottom');
+  var $columnHalf = document.createElement('div');
+  $columnHalf.setAttribute('class', 'column-half');
+  var $entryImage = document.createElement('img');
+  $entryImage.setAttribute('class', 'entryImage');
+  $entryImage.setAttribute('src', entry.photoUrl);
+  var $columnHalf2 = document.createElement('div');
+  $columnHalf2.setAttribute('class', 'column-half');
+  var $entryTitle = document.createElement('h2');
+  $entryTitle.setAttribute('class', 'entryTitle');
+  $entryTitle.textContent = entry.title;
+  var $entryNotes = document.createElement('p');
+  $entryNotes.textContent = entry.notes;
+  $li.appendChild($row);
+  $row.appendChild($columnHalf);
+  $columnHalf.appendChild($entryImage);
+  $row.appendChild($columnHalf2);
+  $columnHalf2.appendChild($entryTitle);
+  $columnHalf2.appendChild($entryNotes);
+  return $li;
+}
+
+window.addEventListener('DOMContentLoaded', function showEntryList(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var DOMentry = renderEntry(data.entries[i]);
+    $entryList.appendChild(DOMentry);
+  }
+})
+;
