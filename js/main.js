@@ -2,6 +2,7 @@ var $form = document.querySelector('#entry-form');
 var $photoUrl = $form.elements.photoUrl;
 var $image = document.querySelector('.image');
 var $entryList = document.querySelector('#entryList');
+var $entries = $entryList.querySelectorAll('li');
 var $views = document.querySelectorAll('.view');
 var $nav = document.querySelector('#nav');
 var $new = document.querySelector('#new');
@@ -29,18 +30,37 @@ function handleSubmit(event) {
   entry.title = $form.elements.title.value;
   entry.photoUrl = $form.elements.photoUrl.value;
   entry.notes = $form.elements.notes.value;
-  entry.entryId = data.nextEntryId;
-  data.entries.push(entry);
-  data.nextEntryId += 1;
+  if (data.editing === null) {
+    entry.entryId = data.nextEntryId;
+    data.entries.push(entry);
+    data.nextEntryId += 1;
+    var DOMentryNew = renderEntry(entry);
+    $entryList.prepend(DOMentryNew);
+  } else {
+    var x = data.editingId;
+    entry.entryId = x;
+    for (var h = 0; h < data.entries.length; h++) {
+      if (data.entries[h].entryId.toString() === x) {
+        data.entries.splice(h, 1, entry);
+      }
+    }
+    var DOMentryEdited = renderEntry(entry);
+    for (var g = 0; g < $entries.length; g++) {
+      if ($entries[g].getAttribute('data-entry-id') === x) {
+        $entries[g].replaceWith(DOMentryEdited);
+      }
+    }
+  }
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
   dvSwap('entries');
-  var DOMentryNew = renderEntry(entry);
-  $entryList.prepend(DOMentryNew);
+  data.editing = null;
+  data.editingId = null;
 }
 
 function renderEntry(entry) {
   var $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', entry.entryId);
   var $row = document.createElement('div');
   $row.setAttribute('class', 'row margin-bottom');
   var $columnHalf = document.createElement('div');
@@ -107,6 +127,7 @@ function doEdit(event) {
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId.toString() === targetId) {
         data.editing = data.entries[k];
+        data.editingId = targetId;
         $form.elements.title.value = data.editing.title;
         $form.elements.photoUrl.value = data.editing.photoUrl;
         $form.elements.notes.value = data.editing.notes;
