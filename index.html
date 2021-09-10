@@ -7,7 +7,8 @@
   <link rel="icon" href="images/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Proza+Libre:wght@400;600&display=swap"
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Proza+Libre:wght@400;600&display=swap"
   rel="stylesheet">
 <link
   rel="stylesheet"
@@ -23,23 +24,26 @@
     <div class="container">
       <div class="row">
         <div class="column-full">
-          <h3>Code Journal</h3>
+          <h3 class="inline">Code Journal</h3>
+          <nav class="inline">
+            <a id="nav" href="#">Entries</a>
+          </nav>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div class="container" data-view="entry-form">
+    <div class="view container" data-view="entry-form">
       <form id="entry-form">
           <div class="row">
             <div class="column-full">
-              <h2>New Entry</h2>
+              <h1>New Entry</h1>
             </div>
           </div>
           <div class="row">
             <div class="column-half">
               <div class="image-container">
-                <img id="photo" src="images/placeholder-image-square.jpg">
+                <img class="image" src="images/placeholder-image-square.jpg">
               </div>
             </div>
             <div class="column-half">
@@ -57,10 +61,25 @@
           </div>
           <div class="row">
             <div class="column-full text-right">
-              <input id="submit" type="submit" class="save" value="SAVE">
+              <input id="submit" type="submit" value="SAVE">
              </div>
           </div>
       </form>
+    </div>
+    <div class="hidden view container" data-view="entries">
+      <div class="row">
+        <div class="column-full relative">
+          <h1>Entries</h1>
+          <button id="new" class="absolute">NEW</button>
+        </div>
+        <div id="empty" class="hidden row">
+          <div class="column-full text-center">
+            <p>No entries have been recorded.</p>
+          </div>
+        </div>
+      </div>
+      <ul id="entryList">
+      </ul>
     </div>
   </main>
   <script src="js/data.js"></script>
