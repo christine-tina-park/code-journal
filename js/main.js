@@ -12,6 +12,7 @@ $form.addEventListener('submit', handleSubmit);
 window.addEventListener('DOMContentLoaded', handleLoad);
 $nav.addEventListener('click', handleNav);
 $new.addEventListener('click', handleNew);
+$entryList.addEventListener('click', doEdit);
 
 function updateSrc(event) {
   var $currentUrl = $photoUrl.value;
@@ -93,4 +94,10 @@ function handleNav(event) {
 
 function handleNew(event) {
   dvSwap('entry-form');
+}
+
+function doEdit(event) {
+  if (event.target.tagName === 'I') {
+    dvSwap('entry-form');
+  }
 }
