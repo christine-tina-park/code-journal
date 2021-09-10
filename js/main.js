@@ -16,7 +16,11 @@ $entryList.addEventListener('click', doEdit);
 
 function updateSrc(event) {
   var $currentUrl = $photoUrl.value;
-  $image.setAttribute('src', $currentUrl);
+  if ($currentUrl !== '') {
+    $image.setAttribute('src', $currentUrl);
+  } else {
+    $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  }
 }
 
 function handleSubmit(event) {
@@ -37,7 +41,6 @@ function handleSubmit(event) {
 
 function renderEntry(entry) {
   var $li = document.createElement('li');
-  $li.setAttribute('data-entry-id', entry.entryId);
   var $row = document.createElement('div');
   $row.setAttribute('class', 'row margin-bottom');
   var $columnHalf = document.createElement('div');
@@ -54,6 +57,7 @@ function renderEntry(entry) {
   $entryNotes.textContent = entry.notes;
   var $edit = document.createElement('i');
   $edit.setAttribute('class', 'fas fa-pen absolute2 fa-lg');
+  $edit.setAttribute('data-entry-id', entry.entryId);
   $li.appendChild($row);
   $row.appendChild($columnHalf);
   $columnHalf.appendChild($entryImage);
@@ -99,5 +103,15 @@ function handleNew(event) {
 function doEdit(event) {
   if (event.target.tagName === 'I') {
     dvSwap('entry-form');
+    var targetId = event.target.getAttribute('data-entry-id');
+    for (var k = 0; k < data.entries.length; k++) {
+      if (data.entries[k].entryId.toString() === targetId) {
+        data.editing = data.entries[k];
+        $form.elements.title.value = data.editing.title;
+        $form.elements.photoUrl.value = data.editing.photoUrl;
+        $form.elements.notes.value = data.editing.notes;
+        updateSrc();
+      }
+    }
   }
 }
