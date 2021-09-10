@@ -30,7 +30,6 @@ function handleSubmit(event) {
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
   dvSwap('entries');
-  data.view = 'entries';
   var DOMentryNew = renderEntry(entry);
   $entryList.prepend(DOMentryNew);
 }
@@ -81,14 +80,13 @@ function dvSwap(string) {
   } else {
     $empty.className = 'hidden row';
   }
+  data.view = string;
 }
 
 function handleNav(event) {
   dvSwap('entries');
-  data.view = 'entries';
 }
 
 function handleNew(event) {
   dvSwap('entry-form');
-  data.view = 'entry-form';
 }
