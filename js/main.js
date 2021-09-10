@@ -44,18 +44,21 @@ function renderEntry(entry) {
   $entryImage.setAttribute('class', 'entryImage');
   $entryImage.setAttribute('src', entry.photoUrl);
   var $columnHalf2 = document.createElement('div');
-  $columnHalf2.setAttribute('class', 'column-half');
+  $columnHalf2.setAttribute('class', 'column-half relative');
   var $entryTitle = document.createElement('h2');
   $entryTitle.setAttribute('class', 'entryTitle');
   $entryTitle.textContent = entry.title;
   var $entryNotes = document.createElement('p');
   $entryNotes.textContent = entry.notes;
+  var $edit = document.createElement('i');
+  $edit.setAttribute('class', 'fas fa-pen absolute2 fa-lg');
   $li.appendChild($row);
   $row.appendChild($columnHalf);
   $columnHalf.appendChild($entryImage);
   $row.appendChild($columnHalf2);
   $columnHalf2.appendChild($entryTitle);
   $columnHalf2.appendChild($entryNotes);
+  $columnHalf2.appendChild($edit);
   return $li;
 }
 
