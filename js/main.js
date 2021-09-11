@@ -6,6 +6,9 @@ var $views = document.querySelectorAll('.view');
 var $nav = document.querySelector('#nav');
 var $new = document.querySelector('#new');
 var $empty = document.querySelector('#empty');
+var $h1New = document.querySelector('#h1New');
+var $h1Edit = document.querySelector('#h1Edit');
+var $delete = document.querySelector('#delete');
 
 $photoUrl.addEventListener('input', updateSrc);
 $form.addEventListener('submit', handleSubmit);
@@ -118,6 +121,9 @@ function handleNav(event) {
 
 function handleNew(event) {
   dvSwap('entry-form');
+  $h1New.className = '';
+  $h1Edit.className = 'hidden';
+  $delete.className = 'hidden';
   $form.reset();
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   data.editing = null;
@@ -126,6 +132,9 @@ function handleNew(event) {
 function doEdit(event) {
   if (event.target.tagName === 'I') {
     dvSwap('entry-form');
+    $h1New.className = 'hidden';
+    $h1Edit.className = '';
+    $delete.className = '';
     var targetId = event.target.getAttribute('data-entry-id');
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId.toString() === targetId) {

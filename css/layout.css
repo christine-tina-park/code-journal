@@ -158,6 +158,10 @@ i:hover {
   display: inline;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 #submit {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -178,6 +182,17 @@ i:hover {
   border-radius: 4px;
   background-color: #562b81;
   color: white;
+}
+
+#delete {
+  width: 82px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid red;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: red;
+  padding: 0;
 }
 
 @media screen and (min-width: 768px) {
