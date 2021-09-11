@@ -2,7 +2,6 @@ var $form = document.querySelector('#entry-form');
 var $photoUrl = $form.elements.photoUrl;
 var $image = document.querySelector('.image');
 var $entryList = document.querySelector('#entryList');
-var $entries = $entryList.querySelectorAll('li');
 var $views = document.querySelectorAll('.view');
 var $nav = document.querySelector('#nav');
 var $new = document.querySelector('#new');
@@ -37,17 +36,18 @@ function handleSubmit(event) {
     var DOMentryNew = renderEntry(entry);
     $entryList.prepend(DOMentryNew);
   } else {
-    var x = data.editingId;
-    entry.entryId = x;
+    entry.entryId = data.editing.entryId;
     for (var h = 0; h < data.entries.length; h++) {
-      if (data.entries[h].entryId.toString() === x) {
+      if (data.entries[h].entryId === entry.entryId) {
         data.entries.splice(h, 1, entry);
       }
     }
     var DOMentryEdited = renderEntry(entry);
+    var $entries = $entryList.querySelectorAll('li');
     for (var g = 0; g < $entries.length; g++) {
-      if ($entries[g].getAttribute('data-entry-id') === x) {
-        $entries[g].replaceWith(DOMentryEdited);
+      if ($entries[g].getAttribute('data-entry-id') === entry.entryId.toString()) {
+        var oldEntry = $entries[g];
+        $entryList.replaceChild(DOMentryEdited, oldEntry);
       }
     }
   }
@@ -55,7 +55,6 @@ function handleSubmit(event) {
   $form.reset();
   dvSwap('entries');
   data.editing = null;
-  data.editingId = null;
 }
 
 function renderEntry(entry) {
@@ -114,10 +113,14 @@ function dvSwap(string) {
 
 function handleNav(event) {
   dvSwap('entries');
+  data.editing = null;
 }
 
 function handleNew(event) {
   dvSwap('entry-form');
+  $form.reset();
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  data.editing = null;
 }
 
 function doEdit(event) {
@@ -127,7 +130,6 @@ function doEdit(event) {
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId.toString() === targetId) {
         data.editing = data.entries[k];
-        data.editingId = targetId;
         $form.elements.title.value = data.editing.title;
         $form.elements.photoUrl.value = data.editing.photoUrl;
         $form.elements.notes.value = data.editing.notes;
