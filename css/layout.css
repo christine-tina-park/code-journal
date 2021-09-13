@@ -238,6 +238,7 @@ i:hover {
   width: 320px;
   height: 130px;
   color: black;
+  z-index: 10;
 }
 
 #popUpBox > p {

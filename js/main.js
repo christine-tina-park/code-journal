@@ -11,6 +11,7 @@ var $h1Edit = document.querySelector('#h1Edit');
 var $delete = document.querySelector('#delete');
 var $popUpBG = document.querySelector('#popUpBG');
 var $cancel = document.querySelector('#cancel');
+var $confirm = document.querySelector('#confirm');
 
 $photoUrl.addEventListener('input', updateSrc);
 $form.addEventListener('submit', handleSubmit);
@@ -20,6 +21,7 @@ $new.addEventListener('click', handleNew);
 $entryList.addEventListener('click', doEdit);
 $delete.addEventListener('click', showPopUp);
 $cancel.addEventListener('click', hidePopUp);
+$confirm.addEventListener('click', handleDelete);
 
 function updateSrc(event) {
   var $currentUrl = $photoUrl.value;
@@ -158,4 +160,19 @@ function showPopUp(event) {
 
 function hidePopUp(event) {
   $popUpBG.className = 'hidden row';
+  dvSwap('entries');
+}
+
+function handleDelete(event) {
+  for (var l = 0; l < data.entries.length; l++) {
+    if (data.editing.entryId === data.entries[l].entryId) {
+      data.entries.splice(l, 1);
+    }
+  }
+  var $entries = $entryList.querySelectorAll('li');
+  for (var m = 0; m < $entries.length; m++) {
+    if ($entries[m].getAttribute('data-entry-id') === data.editing.entryId.toString()) {
+      $entryList.removeChild($entries[m]);
+    }
+  }
 }
