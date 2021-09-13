@@ -60,10 +60,10 @@
               <textarea id="notes" name="notes" required></textarea>
             </div>
           </div>
-          <div class="row space-between">
-              <button id="delete">Delete Entry</button>
-              <input id="submit" type="submit" value="SAVE">
-             </div>
+          <div id="lastRow" class="row">
+            <button id="delete" class="hidden">Delete Entry</button>
+            <input id="submit" type="submit" value="SAVE">
+          </div>
       </form>
     </div>
     <div class="hidden view container" data-view="entries">
@@ -82,6 +82,13 @@
       </ul>
     </div>
   </main>
+  <div id="popUpBG" class="hidden row">
+    <div id="popUpBox">
+      <p>Are you sure you want to delete this entry?</p>
+      <button id="cancel" class="popUpButtons">Cancel</button>
+      <button id="confirm" class="popUpButtons">Confirm</button>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
