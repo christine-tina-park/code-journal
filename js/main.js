@@ -155,12 +155,12 @@ function doEdit(event) {
 }
 
 function showPopUp(event) {
+  event.preventDefault();
   $popUpBG.className = 'row';
 }
 
 function hidePopUp(event) {
   $popUpBG.className = 'hidden row';
-  dvSwap('entries');
 }
 
 function handleDelete(event) {
@@ -175,4 +175,7 @@ function handleDelete(event) {
       $entryList.removeChild($entries[m]);
     }
   }
+  hidePopUp();
+  dvSwap('entries');
+  data.editing = null;
 }
