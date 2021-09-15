@@ -142,6 +142,10 @@ i:hover {
   position: relative;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
   right: 0;
@@ -158,15 +162,17 @@ i:hover {
   display: inline;
 }
 
-#submit {
+.space-between {
+  justify-content: space-between;
+}
+
+.popUpButtons {
+  position: absolute;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  height: 32px;
-  width: 72px;
+  text-transform: uppercase;
   border: none;
   border-radius: 4px;
-  background-color: #562b81;
-  color: white;
 }
 
 #new {
@@ -178,6 +184,83 @@ i:hover {
   border-radius: 4px;
   background-color: #562b81;
   color: white;
+}
+
+#lastRow {
+  position: relative;
+}
+
+#delete {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 82px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid red;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: red;
+  padding: 0;
+}
+
+#submit {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  height: 32px;
+  width: 72px;
+  border: none;
+  border-radius: 4px;
+  background-color: #562b81;
+  color: white;
+}
+
+#popUpBG {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#popUpBox {
+  position: relative;
+  text-align: center;
+  background-color: white;
+  padding-top: 10px;
+  width: 320px;
+  height: 130px;
+  color: black;
+  z-index: 10;
+}
+
+#popUpBox > p {
+  font-size: 14px;
+}
+
+#cancel {
+  width: 84px;
+  height: 32px;
+  left: 20px;
+  bottom: 20px;
+  background-color: #b6b6b6;
+}
+
+#confirm {
+  width: 92px;
+  height: 32px;
+  right: 20px;
+  bottom: 20px;
+  color: white;
+  background-color: #dc2626;
 }
 
 @media screen and (min-width: 768px) {

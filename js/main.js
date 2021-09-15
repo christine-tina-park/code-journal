@@ -6,6 +6,12 @@ var $views = document.querySelectorAll('.view');
 var $nav = document.querySelector('#nav');
 var $new = document.querySelector('#new');
 var $empty = document.querySelector('#empty');
+var $h1New = document.querySelector('#h1New');
+var $h1Edit = document.querySelector('#h1Edit');
+var $delete = document.querySelector('#delete');
+var $popUpBG = document.querySelector('#popUpBG');
+var $cancel = document.querySelector('#cancel');
+var $confirm = document.querySelector('#confirm');
 
 $photoUrl.addEventListener('input', updateSrc);
 $form.addEventListener('submit', handleSubmit);
@@ -13,6 +19,9 @@ window.addEventListener('DOMContentLoaded', handleLoad);
 $nav.addEventListener('click', handleNav);
 $new.addEventListener('click', handleNew);
 $entryList.addEventListener('click', doEdit);
+$delete.addEventListener('click', showPopUp);
+$cancel.addEventListener('click', hidePopUp);
+$confirm.addEventListener('click', handleDelete);
 
 function updateSrc(event) {
   var $currentUrl = $photoUrl.value;
@@ -118,6 +127,9 @@ function handleNav(event) {
 
 function handleNew(event) {
   dvSwap('entry-form');
+  $h1New.className = '';
+  $h1Edit.className = 'hidden';
+  $delete.className = 'hidden';
   $form.reset();
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   data.editing = null;
@@ -126,6 +138,9 @@ function handleNew(event) {
 function doEdit(event) {
   if (event.target.tagName === 'I') {
     dvSwap('entry-form');
+    $h1New.className = 'hidden';
+    $h1Edit.className = '';
+    $delete.className = '';
     var targetId = event.target.getAttribute('data-entry-id');
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId.toString() === targetId) {
@@ -137,4 +152,30 @@ function doEdit(event) {
       }
     }
   }
+}
+
+function showPopUp(event) {
+  event.preventDefault();
+  $popUpBG.className = 'row';
+}
+
+function hidePopUp(event) {
+  $popUpBG.className = 'hidden row';
+}
+
+function handleDelete(event) {
+  for (var l = 0; l < data.entries.length; l++) {
+    if (data.editing.entryId === data.entries[l].entryId) {
+      data.entries.splice(l, 1);
+    }
+  }
+  var $entries = $entryList.querySelectorAll('li');
+  for (var m = 0; m < $entries.length; m++) {
+    if ($entries[m].getAttribute('data-entry-id') === data.editing.entryId.toString()) {
+      $entryList.removeChild($entries[m]);
+    }
+  }
+  hidePopUp();
+  dvSwap('entries');
+  data.editing = null;
 }
